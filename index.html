@@ -34,8 +34,8 @@
 				<input type="number" min="0" max="99" name="pLvlDebut" id="pLvlDebut" required autofocus />
 				<label for="pLvlDebut">Paragon level début (0-99)</label>
 				<br />
-				<input type="number" min="1" max="100" name="pLvlFin" id="pLvlFin" required />
-				<label for="pLvlFin">Paragon level fin (1-100)</label>
+				<input type="number" min="0" max="100" name="pLvlFin" id="pLvlFin" required />
+				<label for="pLvlFin">Paragon level fin (0-100)</label>
 				<br />
 				<input type="number" min="0" name="xpDebut" id="xpDebut" required />
 				<label for="xpDebut">XP début (5 chiffres max)</label>	
@@ -55,8 +55,7 @@
 				<br />
 				<span class="startstoptime" id="stopWatch">000:00:00</span>
 				<input type="button" value="Start/Pause" onclick="startStopTimer.toggle()" />
-				<input type="button" value="Stop/Reset" onclick="startStopReset()" />
-				<input type="button" value="Copier" onclick="copyTime()" />
+				<input type="button" value="Copier" onclick="copyAndReset()" />
 				<br/><br/>				
 			</fieldset>
 			<div class="centeredBox">

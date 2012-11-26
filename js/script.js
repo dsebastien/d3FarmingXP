@@ -351,23 +351,24 @@
 		return str;
 	}
 	
-	function startStopReset() {
-		startStopCurrent = 0;
-		startStopTimer.stop().once();
-	}
-	
-	function copyTime(){
+	function copyAndReset() {
 		var compteur = $('#stopWatch').text()
 		console.log("duree: "+compteur)
 		var split = compteur.split(":")
 		
 		var duree = parseInt(split[0])
+		
 		// on était pas si loin de la minute en plus :)
 		if(split[1] >= 45){
 			duree+=1
 		}
 		
+		// on copie la duree
 		$('#duree').val(duree)
+		
+		// on reset le compteur
+		startStopCurrent = 0;
+		startStopTimer.stop().once();
 	}
 		
 	$(document).ready(function(){
@@ -474,7 +475,11 @@
 			console.log("duree: "+duree)
 			
 			// calcul d'autres infos
-			var xpTotaleLvlDebut = findTotalRequiredXpForLevel(pLvlDebut)
+			var xpTotaleLvlDebut = 0
+			if(pLvlDebut > 0){
+				xpTotaleLvlDebut = findTotalRequiredXpForLevel(pLvlDebut)
+			}
+			
 			console.log("xp totale (du level) debut: "+xpTotaleLvlDebut)
 			var xpTotaleLvlFin = findTotalRequiredXpForLevel(pLvlFin)
 			console.log("xp totale (du level) fin: "+xpTotaleLvlFin)
