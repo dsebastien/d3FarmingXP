@@ -250,9 +250,22 @@ table > tbody tr:nth-child(even) {
     background-color: #dddddd
 }
 
+ul{
+	list-style: none;
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+ul > li:before{
+	content: "\00BB \0020";
+}
+
 section#newEntrySection{
 	width: 520px;
-	height: 320px;
+	height: 360px;
+	z-index: 5;
+	background-color: #aaa;
 }
 
 #formAddRunWrapper{

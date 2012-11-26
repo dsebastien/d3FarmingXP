@@ -25,12 +25,11 @@
 </header>
 <div role="main">
 <section id="newEntrySection">
-<h1>Ajout d'un run:</h1>
+<h1>Ajout d'un run</h1>
 
 <div id="formAddRunWrapper">
 	<form id="formAddRun" action="">
 			<fieldset>
-				
 				<input type="number" min="0" max="99" name="pLvlDebut" id="pLvlDebut" required autofocus />
 				<label for="pLvlDebut">Paragon level début (0-99)</label>
 				<br />
@@ -50,13 +49,16 @@
 				<input type="text" name="heureFin" id="heureFin" required />
 				<label for="heureFin">Heure fin (ex: 20:50)</label>
 				-->
+				<br />
 				<input type="number" min="1" id="duree" required onkeydown="if (event.keyCode == 13) document.getElementById('btnSave').click()" />
 				<label for="duree">Durée (minutes)</label>
 				<br />
+				<div style="text-align: center">
 				<span class="startstoptime" id="stopWatch">000:00:00</span>
 				<input type="button" value="Start/Pause" onclick="startStopTimer.toggle()" />
 				<input type="button" value="Copier" onclick="copyAndReset()" />
-				<br/><br/>				
+				</div>
+				<br/>			
 			</fieldset>
 			<div class="centeredBox">
 					<button type="reset" class="gradient">Effacer</button>
@@ -93,7 +95,7 @@
 </section>
 
 <section id="statsSection">
-	<h1>Stats:</h1>
+	<h1>Stats</h1>
 	<table id="tblStatsDefaultContent" hidden>
 		<thead>
 			<tr>
@@ -105,6 +107,14 @@
 		</tbody>
 	</table>
 	<div id="stats" />
+</section>
+
+<section id="aboutSection">
+	<h1>About</h1>
+	<ul>
+		<li>Author: <a href="http://www.dsebastien.net">dSebastien</a></li>
+		<li>Sources @ <a href="https://github.com/dsebastien/d3FarmingXP">GitHub</a></li>
+	</ul>
 </section>
 
 </div>

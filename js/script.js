@@ -316,9 +316,14 @@
 			
 		// s'il y a des runs enregistrés, on prend le dernier pLvl connu comme valeur par défaut pour le pLvl début et fin
 		if(runs.length > 0){
-			var lastpLvl = runs[runs.length-1][2]
+			var lastRun = runs[runs.length-1]
+			var lastpLvl = lastRun[2]
 			$('#pLvlDebut').val(lastpLvl)
 			$('#pLvlFin').val(lastpLvl)
+			
+			// xp debut pour le prochain run = xp fin du dernier run enregistré
+			$('#xpDebut').val(lastRun[4]/1000)
+			$('#xpFin').focus()
 		}
 		
 		noty({

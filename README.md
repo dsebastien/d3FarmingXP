@@ -12,10 +12,8 @@ Use the form to add XP runs information:
 * * example 2: you have 500.000 xp. You enter 500
 * the XP at the beginning of the run (same)
 * the duration (in minutes) of the run
-* * tip: use the stop watch just below the field. Start the stopwatch, go get your XP, and hit stop then copy
-
+* * tip: use the stop watch just below the field. Start the stopwatch, go get your XP, and hit copy when you're done
 The information about runs is kept in your local browser, not on the Web.
-
 
 # Facts for programming geeks
 * HTML5 & new APIs
