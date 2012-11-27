@@ -607,6 +607,7 @@
 		$("#newEntrySection").draggable()
 		$("#statsSection").draggable()
 		$("#runsSection").draggable()
+		$("#aboutSection").draggable()
 		
 		//tic tac
 		startStopTimer = $.timer(function() {
