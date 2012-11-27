@@ -21,26 +21,28 @@
 <body>
  <!--[if lt IE 7]><p class=chromeframe>Ton navigateur Web est <em>préhistorique!</em> <a href="http://browsehappy.com/">Passe à un truc plus moderne</a> ou <a href="http://www.google.com/chromeframe/?redirect=true">installe Google Chrome Frame</a> pour bien profiter de ce site.</p><![endif]-->
 <header>
-	<h1 class="gradient">Diablo 3 XP Farming (v1.1)</h1>
+	<h1 class="gradient">
+		Diablo 3 XP Farming (v1.1) [ <img class="languageIcon" src="img/fr.png" onclick="switchLanguageTo('fr')" /> / <img class="languageIcon" src="img/en.png" onclick="switchLanguageTo('en')" /> ]
+	</h1>
 </header>
 <div role="main">
 <section id="newEntrySection">
-<h1>Ajout d'un run</h1>
+<h1 id="titleAddRun">Ajout d'un run</h1>
 
 <div id="formAddRunWrapper">
 	<form id="formAddRun" action="">
 			<fieldset>
 				<input type="number" min="0" max="99" name="pLvlDebut" id="pLvlDebut" required autofocus />
-				<label for="pLvlDebut">Paragon level début (0-99)</label>
+				<label id="lblLvlStart" for="pLvlDebut">Paragon level début (0-99)</label>
 				<br />
 				<input type="number" min="0" max="100" name="pLvlFin" id="pLvlFin" required />
-				<label for="pLvlFin">Paragon level fin (0-100)</label>
+				<label id="lblLvlEnd" for="pLvlFin">Paragon level fin (0-100)</label>
 				<br />
 				<input type="number" min="0" name="xpDebut" id="xpDebut" required />
-				<label for="xpDebut">XP début (5 chiffres max)</label>	
+				<label id="lblXpStart" for="xpDebut">XP début (5 chiffres max)</label>	
 				<br />
 				<input type="number" min="0" name="xpFin" id="xpFin" required />
-				<label for="xpFin">XP fin (5 chiffres max)</label>	
+				<label id="lblXpEnd" for="xpFin">XP fin (5 chiffres max)</label>	
 				<br />
 				<!--
 				<input type="text" name="heureDebut" id="heureDebut" required />
@@ -51,17 +53,17 @@
 				-->
 				<br />
 				<input type="number" min="1" id="duree" required onkeydown="if (event.keyCode == 13) document.getElementById('btnSave').click()" />
-				<label for="duree">Durée (minutes)</label>
+				<label id="lblDuration" for="duree">Durée (minutes)</label>
 				<br />
 				<div style="text-align: center">
 				<span class="startstoptime" id="stopWatch">000:00:00</span>
-				<input type="button" value="Start/Pause" onclick="startStopTimer.toggle()" />
-				<input type="button" value="Copier" onclick="copyAndReset()" />
+				<input type="button" id="btnStartPause" value="Start/Pause" onclick="startStopTimer.toggle()" />
+				<input id="btnCopyTime" type="button" value="Copier" onclick="copyAndReset()" />
 				</div>
 				<br/>			
 			</fieldset>
 			<div class="centeredBox">
-					<button type="reset" class="gradient">Effacer</button>
+					<button type="reset" id="btnReset" class="gradient">Effacer</button>
 					<button type="button" id="btnResetAll"  class="gradient">Effacer historique</button>
 					<button type="submit" id="btnSave" class="gradient">Enregistrer</button>
 				</div>
@@ -71,20 +73,20 @@
 </section>
 
 <section id="runsSection">
-	<h1>Runs</h1>
+	<h1 id="titleRuns">Runs</h1>
 	<table id="tblRunsDefaultContent" hidden>
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Durée</th>
-				<th>pLvl début</th>
-				<th>pLvl fin</th>
-				<th>XP début</th>
-				<th>XP fin</th>
-				<th>XP totale début</th>
-				<th>XP totale fin</th>
-				<th>XP gagnée</th>
-				<th>XP/heure</th>
+				<th id="thDuration">Durée</th>
+				<th id="thLvlStart">pLvl début</th>
+				<th id="thLvlEnd">pLvl fin</th>
+				<th id="thXpStart">XP début</th>
+				<th id="thXpEnd">XP fin</th>
+				<th id="thXpTotalStart">XP totale début</th>
+				<th id="thXpTotalEnd">XP totale fin</th>
+				<th id="thXpGain">XP gagnée</th>
+				<th id="thXpPerHour">XP/heure</th>
 
 			</tr>
 		</thead>
@@ -95,12 +97,12 @@
 </section>
 
 <section id="statsSection">
-	<h1>Stats</h1>
+	<h1 id="titleStats">Stats</h1>
 	<table id="tblStatsDefaultContent" hidden>
 		<thead>
 			<tr>
-				<th>Stat</th>
-				<th>Valeur</th>
+				<th id="thStat">Stat</th>
+				<th id="thValue">Valeur</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -110,10 +112,10 @@
 </section>
 
 <section id="aboutSection">
-	<h1>About</h1>
+	<h1 id="titleAbout">About</h1>
 	<ul>
-		<li>Author: <a href="http://www.dsebastien.net">dSebastien</a></li>
-		<li>Sources @ <a href="https://github.com/dsebastien/d3FarmingXP">GitHub</a></li>
+		<li><span id="lblAuthor">Author</span>: <a href="http://www.dsebastien.net">dSebastien</a></li>
+		<li><span id="lblSources">Sources</span> @ <a href="https://github.com/dsebastien/d3FarmingXP">GitHub</a></li>
 	</ul>
 </section>
 
@@ -125,6 +127,7 @@
 <script src="js/libs/noty/layouts/bottomRight.js"></script>
 <script src="js/libs/noty/themes/default.js"></script>
 <script src="js/libs/jquery-timer/jquery.timer.js"></script>
+<script src="js/libs/jquery-i18n/jquery.i18n.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/script.js"></script>
 

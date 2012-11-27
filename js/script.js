@@ -1,5 +1,9 @@
 /* Author: Sebastien Dubois
 */
+	//
+	// Globals (ouhhh scary ^^)
+	//
+	
 	// Paragon levels data
 	var paragonLevels = {}
 	paragonLevels["paragonLevels"] = [
@@ -105,16 +109,169 @@
 		{ "level":  100, "xp": 322560000, "totalXP": 10454400000}
 	]
 	
+	// i18n
+	var dictionary_fr = {
+		'title.addRun' : 'Ajout d\'un run',
+		'title.runs' : 'Runs',
+		'title.stats': 'Statistiques',
+		'title.about' : 'A propos',
+		
+		'msg.plvlStart' : 'Paragon level d&eacute;but (0-99)',
+		'msg.plvlEnd' : 'Paragon level fin (0-100)',
+		'msg.xpStart' : 'XP d&eacute;but (valeur / 1000)',
+		'msg.xpEnd' : 'XP fin (valeur / 1000)',
+		'msg.duration' : 'Dur&eacute;e (minutes)',
+		'msg.author' : 'Auteur',
+		'msg.sources' : 'Code source',
+		
+		'btn.startPause' : 'Start/Pause',
+		'btn.copyTime' : 'Copier',
+		'btn.reset' : 'Reset',
+		'btn.resetAll' : 'Effacer historique',
+		'btn.save' : 'Enregistrer',
+		
+		'col.duration' : 'Dur&eacute;e',
+		'col.lvlStart' : 'Lvl d&eacute;but',
+		'col.lvlEnd' : 'Lvl fin',
+		'col.xpStart' : 'XP d&eacute;but',
+		'col.xpEnd' : 'XP fin',
+		'col.xpTotalStart' : 'XP totale d&eacute;but',
+		'col.xpTotalEnd' : 'XP totale fin',
+		'col.xpGain' : 'XP gagn&eacute;e',
+		'col.xpPerHour' : 'XP/heure',
+		'col.stat' : 'Statistique',
+		'col.value' : 'Valeur'
+	}
+	
+	var dictionary_en = {
+		'title.addRun' : 'Add a run',
+		'title.runs' : 'Runs',
+		'title.stats': 'Statistics',
+		'title.about' : 'About',
+		
+		'msg.plvlStart' : 'Paragon level at start (0-99)',
+		'msg.plvlEnd' : 'Paragon level at end (0-100)',
+		'msg.xpStart' : 'XP at start (value / 1000)',
+		'msg.xpEnd' : 'XP at end (value / 1000)',
+		'msg.duration' : 'Duration (minutes)',
+		'msg.author' : 'Author',
+		'msg.sources' : 'Source code',
+		
+		'btn.startPause' : 'Start/Pause',
+		'btn.copyTime': 'Copy',
+		'btn.reset' : 'Reset',
+		'btn.resetAll' : 'Clear everything',
+		'btn.save' : 'Save',
+		
+		'col.duration' : 'Duration',
+		'col.lvlStart' : 'Lvl start',
+		'col.lvlEnd' : 'Lvl end',
+		'col.xpStart' : 'XP start',
+		'col.xpEnd' : 'XP end',
+		'col.xpTotalStart' : 'XP total start',
+		'col.xpTotalEnd' : 'XP total end',
+		'col.xpGain' : 'XP gained',
+		'col.xpPerHour' : 'XP/hour',
+		'col.stat' : 'Stat',
+		'col.value' : 'Value'
+	}
+	
+	function translatePage(){
+			$('#titleAddRun').html($.i18n._('title.addRun'))
+			$('#titleRuns').html($.i18n._('title.runs'))
+			$('#titleStats').html($.i18n._('title.stats'))
+			$('#titleAbout').html($.i18n._('title.about'))
+			
+			$('#lblLvlStart').html($.i18n._('msg.plvlStart'))
+			$('#lblLvlEnd').html($.i18n._('msg.plvlEnd'))
+			$('#lblXpStart').html($.i18n._('msg.xpStart'))
+			$('#lblXpEnd').html($.i18n._('msg.xpEnd'))
+			$('#lblDuration').html($.i18n._('msg.duration'))
+			
+			// intput type button
+			$('#btnStartPause').attr('value', $.i18n._('btn.startPause'))
+			$('#btnCopyTime').attr('value', $.i18n._('btn.copyTime'))
+			
+			// different because real <button> are used
+			$('#btnReset').html($.i18n._('btn.reset'))
+			$('#btnResetAll').html($.i18n._('btn.resetAll'))
+			$('#btnSave').html($.i18n._('btn.save'))
+			
+			// little hack because we have duplicate ids in the page (caused by the hidden table that we use as template. Alternative: find a real/nice templating mechanism
+			// with that syntax, all elements with id=X are matched
+			$('[id=thDuration]').html($.i18n._('col.duration'))
+			$('[id=thLvlStart]').html($.i18n._('col.lvlStart'))
+			$('[id=thLvlEnd]').html($.i18n._('col.lvlEnd'))
+			$('[id=thXpStart]').html($.i18n._('col.xpStart'))
+			$('[id=thXpEnd]').html($.i18n._('col.xpEnd'))
+			$('[id=thXpTotalStart]').html($.i18n._('col.xpTotalStart'))
+			$('[id=thXpTotalEnd]').html($.i18n._('col.xpTotalEnd'))
+			$('[id=thXpGain]').html($.i18n._('col.xpGain'))
+			$('[id=thXpPerHour]').html($.i18n._('col.xpPerHour'))
+			$('[id=thStat]').html($.i18n._('col.stat'))
+			$('[id=thValue]').html($.i18n._('col.value'))
+			
+			$('#lblAuthor').html($.i18n._('msg.author'))
+			$('#lblSources').html($.i18n._('msg.sources'))
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	}
+	
+	
+	var currentLang = "en"
+	
 	//tictac
 	var startStopTimer = 0
 	var startStopCurrent = 0
-
 	
+	//localStorage keys
 	var localStorageAttributeRuns = "runs"
+	var localStorageAttributeLanguage = "lang"
 	
+	
+	//
+	// Functions
+	//
 	function supportsLocalStorage() {
 		console.log("Checking for LocalStorage support")
 		return Modernizr.localstorage
+	}
+	
+	function loadLanguage(){
+		console.log("Trying to load language from LocalStorage")
+		var lang = localStorage.getItem(localStorageAttributeLanguage)
+		if(lang === null){
+			console.log("Language does not exist in LocalStorage, initializing & saving once")
+			lang = currentLang // défaut...
+			console.log("Language initialized, saving to LocalStorage")
+			localStorage.setItem(localStorageAttributeLanguage, lang)
+		}
+		return lang
+	}
+	
+	function switchLanguageTo(newLang){
+		console.log("Switching the language to: "+newLang)
+	
+		var previousLang = currentLang
+		currentLang = newLang
+		
+		if(newLang == "en"){
+			$.i18n.setDictionary(dictionary_en);
+		}else{ // for now we only support english & french
+			$.i18n.setDictionary(dictionary_fr);
+		}
+		
+		// todo improve -- translate only if necessary?
+		translatePage()
 	}
 
 	function saveRuns(runsToSave){
@@ -274,10 +431,6 @@
 			sLvl100Completion = ((sXpCurrentTotal / findTotalRequiredXpForLevel(100))*100).toFixed(2)
 			console.log("% completion of lvl 100: "+sLvl100Completion)
 		}
-
-		/*
-		runs[runs.length] = [duree, pLvlDebut,pLvlFin,xpDebut,xpFin, totalXpDebut, totalXpFin, gainXp, xpHeure]
-		*/
 		
 		content.append("<tr><td>Runs enregistres</td><td>"+formatNumberWithThousandsSeparator(sRuns)+"</td></tr>")
 		content.append("<tr><td>Duree totale des runs</td><td>"+sTotalDurationOfRuns+" minutes</td></tr>")
@@ -403,15 +556,20 @@
 			buttons: false // an array of buttons
 		};
 	
+		// how to translate this one?
 		if(!supportsLocalStorage()){
 			console.log("LocalStorage is not supported!")
 			noty({
-				text: 'Navigateur de merde d&eacute;tect&eacute;!<br /><br />Cette application ne fonctionnera pas bien sans Mozilla Firefox ou Google Chrome!',
+				text: 'Navigateur de merde d&eacute;tect&eacute;!<br /><br />Cette application ne fonctionnera pas bien sans Mozilla Firefox ou Google Chrome (version r&eacute;cente)!',
 				type: 'error'
 			});
 		}else{
 			console.log("LocalStorage is supported")
 		}
+		
+		// i18n: load language & translate if necessary
+		var language = loadLanguage()
+		switchLanguageTo(language)
 		
 		// on aime que ça bouge ;-)
 		$("#newEntrySection").draggable()

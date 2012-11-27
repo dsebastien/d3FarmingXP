@@ -251,14 +251,8 @@ table > tbody tr:nth-child(even) {
 }
 
 ul{
-	list-style: none;
-	display: inline;
 	margin: 0;
 	padding: 0;
-}
-
-ul > li:before{
-	content: "\00BB \0020";
 }
 
 section#newEntrySection{
@@ -344,4 +338,9 @@ section#statsSection{
 	padding: 5px;
 	text-align: left;
 	
+}
+
+.languageIcon:hover{
+	cursor: pointer;
+	border-bottom: 4px solid white;
 }
