@@ -123,6 +123,20 @@
 		'msg.duration' : 'Dur&eacute;e (minutes)',
 		'msg.author' : 'Auteur',
 		'msg.sources' : 'Code source',
+		'msg.recordedRuns' : 'Runs enregistr&eacute;s',
+		'msg.recordedRunsDuration' : 'Dur&eacute;e totale des runs (minutes)',
+		'msg.xpGainedWithRuns' : 'XP gagn&eacute;e avec les runs',
+		'msg.paragonLevel' : 'Niveau Paragon',
+		'msg.magicFindParagon' : 'Magic find Paragon',
+		'msg.xpCurrentLevel' : 'XP niveau actuel',
+		'msg.xpRequiredForNextLevel' : 'XP requise pour le niveau actuel',
+		'msg.xpMissingForLevelUp' : 'XP manquante pour level up',
+		'msg.completionPercentageCurrentLevel' : '% completion du niveau actuel',
+		'msg.totalXpAcquired' : 'XP totale acquise',
+		'msg.xpMissingForLevel100' : 'XP manquante pour level 100',
+		'msg.xpAveragePerHour' : 'XP moyenne / heure',
+		'msg.hoursToFarmBeforeLevel100' : 'Heures restant pour atteindre level 100',
+		'msg.completionPercentageLevel100' : '% completion du niveau 100',
 		
 		'btn.startPause' : 'Start/Pause',
 		'btn.copyTime' : 'Copier',
@@ -156,6 +170,20 @@
 		'msg.duration' : 'Duration (minutes)',
 		'msg.author' : 'Author',
 		'msg.sources' : 'Source code',
+		'msg.recordedRuns' : 'Recorded runs',
+		'msg.recordedRunsDuration' : 'Total duration of recorded runs (minutes)',
+		'msg.xpGainedWithRuns' : 'XP gained with runs',
+		'msg.paragonLevel' : 'Paragon level',
+		'msg.magicFindParagon' : 'Paragon magic find',
+		'msg.xpCurrentLevel' : 'XP in current level',
+		'msg.xpRequiredForNextLevel' : 'XP required for the current level',
+		'msg.xpMissingForLevelUp' : 'XP missing for level up',
+		'msg.completionPercentageCurrentLevel' : '% completion of current actuel',
+		'msg.totalXpAcquired' : 'Total XP acquired',
+		'msg.xpMissingForLevel100' : 'XP missing for level 100',
+		'msg.xpAveragePerHour' : 'Average XP / hour',
+		'msg.hoursToFarmBeforeLevel100' : 'Hours to farm before hitting level 100',
+		'msg.completionPercentageLevel100' : '% completion of level 100',
 		
 		'btn.startPause' : 'Start/Pause',
 		'btn.copyTime': 'Copy',
@@ -214,16 +242,20 @@
 			$('#lblAuthor').html($.i18n._('msg.author'))
 			$('#lblSources').html($.i18n._('msg.sources'))
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			$('#rowRecordedRuns').html($.i18n._('msg.recordedRuns'))
+			$('#rowRecordedRunsDuration').html($.i18n._('msg.recordedRunsDuration'))
+			$('#rowXpGainedWithRuns').html($.i18n._('msg.xpGainedWithRuns'))
+			$('#rowParagonLevel').html($.i18n._('msg.paragonLevel'))
+			$('#rowMagicFindParagon').html($.i18n._('msg.magicFindParagon'))
+			$('#rowXpCurrentLevel').html($.i18n._('msg.xpCurrentLevel'))
+			$('#rowXpRequiredForNextLevel').html($.i18n._('msg.xpRequiredForNextLevel'))
+			$('#rowXpMissingForLevelUp').html($.i18n._('msg.xpMissingForLevelUp'))
+			$('#rowCompletionPercentageCurrentLevel').html($.i18n._('msg.completionPercentageCurrentLevel'))
+			$('#rowTotalXpAcquired').html($.i18n._('msg.totalXpAcquired'))
+			$('#rowXpMissingForLevel100').html($.i18n._('msg.xpMissingForLevel100'))
+			$('#rowXpAveragePerHour').html($.i18n._('msg.xpAveragePerHour'))
+			$('#rowHoursToFarmBeforeLevel100').html($.i18n._('msg.hoursToFarmBeforeLevel100'))
+			$('#rowCompletionPercentageLevel100').html($.i18n._('msg.completionPercentageLevel100'))	
 	}
 	
 	
@@ -367,9 +399,6 @@
 	
 	function updateStats(runs){
 		console.log("Updating the stats list")
-		var content = $("table#tblStatsDefaultContent").clone()
-		content.removeAttr("hidden")
-		content.attr("id","tblStats")
 		
 		var sRuns = runs.length
 		console.log("runs: "+sRuns)
@@ -432,24 +461,26 @@
 			console.log("% completion of lvl 100: "+sLvl100Completion)
 		}
 		
-		content.append("<tr><td>Runs enregistres</td><td>"+formatNumberWithThousandsSeparator(sRuns)+"</td></tr>")
-		content.append("<tr><td>Duree totale des runs</td><td>"+sTotalDurationOfRuns+" minutes</td></tr>")
-		content.append("<tr><td>XP gagnee avec les runs</td><td>"+formatNumberWithThousandsSeparator(sTotalXpGainOfRuns)+"</td></tr>")
-		content.append("<tr><td>Paragon Level</td><td>"+spLvl+" <progress max='100' value='"+spLvl+"'></progress></td></tr>")
-		content.append("<tr><td>Magic Find Paragon Level</td><td>"+sMfFromLvl+"%</td></tr>")
-		content.append("<tr><td>XP niveau actuel</td><td>"+formatNumberWithThousandsSeparator(sXpInCurrentLvl)+"</td></tr>")
-		content.append("<tr><td>XP requise pour le niveau actuel</td><td>"+formatNumberWithThousandsSeparator(sXpRequiredForCurrentLevel)+"</td></tr>")
-		content.append("<tr><td>XP manquante pour level up</td><td>"+formatNumberWithThousandsSeparator(sXpMissingForLvlUp)+"</td></tr>")
-		content.append("<tr><td>% completion du niveau actuel</td><td>"+sXpPercentageCurrentLevel+"% <progress max='100' value='"+sXpPercentageCurrentLevel+"'></progress></td></tr>")
-		content.append("<tr><td>XP totale acquise</td><td>"+formatNumberWithThousandsSeparator(sXpCurrentTotal)+"</td></tr>")
-		content.append("<tr><td>XP manquante pour level 100</td><td>"+formatNumberWithThousandsSeparator(sXpMissingForLvl100)+"</td></tr>")
-		content.append("<tr><td>XP moyenne / heure</td><td>"+formatNumberWithThousandsSeparator(sXpHourAverage)+"</td></tr>")
-		content.append("<tr><td>Heures restant pour atteindre level 100</td><td>"+sHoursToFarmBeforeLevel100+" heures</td></tr>")
-		content.append("<tr><td>% completion du niveau 100</td><td>"+sLvl100Completion+"% <progress max='100' value='"+sLvl100Completion+"'></progress></td></tr>")
+		$("#valueRecordedRuns").html(formatNumberWithThousandsSeparator(sRuns))
+		
+		$("#valueRecordedRunsDuration").html(sTotalDurationOfRuns)
+		
+		$("#valueXpGainedWithRuns").html()
+		$("#").html(formatNumberWithThousandsSeparator(sTotalXpGainOfRuns))
+		$("#valueParagonLevel").html(spLvl+" <progress max='100' value='"+spLvl+"'></progress>")
+		$("#valueMagicFindParagon").html(sMfFromLvl+"%")
+		$("#valueXpCurrentLevel").html(formatNumberWithThousandsSeparator(sXpInCurrentLvl))
+		$("#valueXpRequiredForNextLevel").html(formatNumberWithThousandsSeparator(sXpRequiredForCurrentLevel))
+		$("#valueXpMissingForLevelUp").html(formatNumberWithThousandsSeparator(sXpMissingForLvlUp))
+		$("#valueCompletionPercentageCurrentLevel").html(sXpPercentageCurrentLevel+"% <progress max='100' value='"+sXpPercentageCurrentLevel+"'></progress>")
+		$("#valueTotalXpAcquired").html(formatNumberWithThousandsSeparator(sXpCurrentTotal))
+		$("#valueXpMissingForLevel100").html(formatNumberWithThousandsSeparator(sXpMissingForLvl100))
+		$("#valueXpAveragePerHour").html(formatNumberWithThousandsSeparator(sXpHourAverage))
+		$("#valueHoursToFarmBeforeLevel100").html(sHoursToFarmBeforeLevel100)
+		$("#valueCompletionPercentageLevel100").html(sLvl100Completion+"% <progress max='100' value='"+sLvl100Completion+"'></progress>")
 		
 		$("div#stats").slideUp()
-		$("div#stats").empty()
-		$("div#stats").html(content)
+		$("table#tblStats").removeAttr("hidden")
 		$("div#stats").slideDown()
 	}
 	
@@ -467,14 +498,15 @@
 		updateRuns(runs)
 		updateStats(runs)
 			
-		// s'il y a des runs enregistrés, on prend le dernier pLvl connu comme valeur par défaut pour le pLvl début et fin
+		// if there are recorded runs
 		if(runs.length > 0){
+			// we take the last known paragon level as default value for the start & end levels
 			var lastRun = runs[runs.length-1]
 			var lastpLvl = lastRun[2]
 			$('#pLvlDebut').val(lastpLvl)
 			$('#pLvlFin').val(lastpLvl)
 			
-			// xp debut pour le prochain run = xp fin du dernier run enregistré
+			// xp start for the next run = xp end of the last recorded run
 			$('#xpDebut').val(lastRun[4]/1000)
 			$('#xpFin').focus()
 		}

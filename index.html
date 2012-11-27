@@ -98,17 +98,74 @@
 
 <section id="statsSection">
 	<h1 id="titleStats">Stats</h1>
-	<table id="tblStatsDefaultContent" hidden>
-		<thead>
-			<tr>
-				<th id="thStat">Stat</th>
-				<th id="thValue">Valeur</th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-	<div id="stats" />
+	<div id="stats">
+		<table id="tblStats" hidden>
+			<thead>
+				<tr>
+					<th id="thStat">Stat</th>
+					<th id="thValue">Valeur</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="rowRecordedRuns">Runs enregistres</td>
+					<td id="valueRecordedRuns"></td>
+				</tr>
+				<tr>
+					<td id="rowRecordedRunsDuration">Duree totale des runs</td>
+					<td id="valueRecordedRunsDuration"></td>
+				</tr>
+				<tr>
+					<td id="rowXpGainedWithRuns">XP gagnee avec les runs</td>
+					<td id="valueXpGainedWithRuns"></td>
+				</tr>
+				<tr>
+					<td id="rowParagonLevel">Paragon Level</td>
+					<td id="valueParagonLevel"></td>
+				</tr>
+				<tr>
+					<td id="rowMagicFindParagon">Magic Find Paragon Level</td>
+					<td id="valueMagicFindParagon"></td>
+				</tr>
+				<tr>
+					<td id="rowXpCurrentLevel">XP niveau actuel</td>
+					<td id="valueXpCurrentLevel"></td>
+				</tr>
+				<tr>
+					<td id="rowXpRequiredForNextLevel">XP requise pour le niveau actuel</td>
+					<td id="valueXpRequiredForNextLevel"></td>
+				</tr>
+				<tr>
+					<td id="rowXpMissingForLevelUp">XP manquante pour level up</td>
+					<td id="valueXpMissingForLevelUp"></td>
+				</tr>
+				<tr>
+					<td id="rowCompletionPercentageCurrentLevel">% completion du niveau actuel</td>
+					<td id="valueCompletionPercentageCurrentLevel"></td>
+				</tr>
+				<tr>
+					<td id="rowTotalXpAcquired">XP totale acquise</td>
+					<td id="valueTotalXpAcquired">formatNumberWithThousandsSeparator(sXpCurrentTotal)</td>
+				</tr>
+				<tr>
+					<td id="rowXpMissingForLevel100">XP manquante pour level 100</td>
+					<td id="valueXpMissingForLevel100">formatNumberWithThousandsSeparator(sXpMissingForLvl100)</td>
+				</tr>
+				<tr>
+					<td id="rowXpAveragePerHour">XP moyenne / heure</td>
+					<td id="valueXpAveragePerHour"></td>
+				</tr>
+				<tr>
+					<td id="rowHoursToFarmBeforeLevel100">Heures restant pour atteindre level 100</td>
+					<td id="valueHoursToFarmBeforeLevel100"></td>
+				</tr>
+				<tr>
+					<td id="rowCompletionPercentageLevel100">% completion du niveau 100</td>
+					<td id="valueCompletionPercentageLevel100"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </section>
 
 <section id="aboutSection">
