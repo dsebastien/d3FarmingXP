@@ -1902,11 +1902,11 @@
 		// on était pas si loin de la minute en plus :)
 		if(runSecondsRemainder >= 45){ // todo etre plus precis :)
 			console.log("Run duration gets one more minute because it was close ("+runSecondsRemainder+" seconds into it)");
-			duree+=1
+			runMinutes+=1
 		}
 		
 		// on copie la duree
-		$('#duree').val(duree) // todo être plus précis :)
+		$('#duree').val(runMinutes) // todo être plus précis :)
 		
 		// on reset le compteur
 		startStopTimer.stop();
