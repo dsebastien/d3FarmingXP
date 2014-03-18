@@ -1792,7 +1792,7 @@
 		console.log("runs: "+sRuns)
 		
 		var spLvl = "?"
-		var sMfFromLvl = "?"
+		var nextLvl = "?"
 		var sXpInCurrentLvl = "?"
 		var sXpRequiredForCurrentLevel = "?"
 		var sXpMissingForLvlUp = "?"
@@ -1804,15 +1804,12 @@
 		
 		if(sRuns > 0){
 			spLvl = runs[runs.length-1][2]
+			nextLvl = "" + (parseInt(spLvl)+1)
 			console.log("plvl: "+spLvl)
-			
-			sMfFromLvl = 3 * spLvl
-			console.log("mf plvl: "+sMfFromLvl)
 			
 			sXpInCurrentLvl = runs[runs.length-1][4]
 			console.log("xp current level: "+sXpInCurrentLvl)
-			
-			sXpRequiredForCurrentLevel = findRequiredXpForLevel(spLvl)
+			sXpRequiredForCurrentLevel = findRequiredXpForLevel(nextLvl)
 			console.log("xp required for current level: "+sXpRequiredForCurrentLevel)
 			
 			sXpMissingForLvlUp = sXpRequiredForCurrentLevel - sXpInCurrentLvl
@@ -1845,8 +1842,7 @@
 		
 		$("#valueRecordedRunsDuration").html(sTotalDurationOfRuns)
 		
-		$("#valueXpGainedWithRuns").html()
-		$("#").html(formatNumberWithThousandsSeparator(sTotalXpGainOfRuns))
+		$("#valueXpGainedWithRuns").html(formatNumberWithThousandsSeparator(sTotalXpGainOfRuns))
 		$("#valueParagonLevel").html(spLvl)
 		$("#valueXpCurrentLevel").html(formatNumberWithThousandsSeparator(sXpInCurrentLvl))
 		$("#valueXpRequiredForNextLevel").html(formatNumberWithThousandsSeparator(sXpRequiredForCurrentLevel))
@@ -2034,33 +2030,32 @@
 			
 			var xpFin = $('#xpFin').val() * 1000
 			console.log("xpFin: "+xpFin)
-			/*
-			var heureDebut = $('#heureDebut').val()
-			console.log("heure debut: "+heureDebut)
 			
-			var heureFin = $('#heureFin').val()
-			console.log("heure fin: "+heureFin)
-			
-			var duree = findTimeDiff(heureDebut,heureFin) //$('#duree').val()
-			*/
 			var duree = $('#duree').val()
 			console.log("duree: "+duree)
 			
 			// calcul d'autres infos
 			var xpTotaleLvlDebut = 0
+			var xpNecessaireLvlDebut = 0
+			var xpTotaleLvlFin = 0
+			var xpNecessaireLvlFin = 0
 			if(pLvlDebut > 0){
 				xpTotaleLvlDebut = findTotalRequiredXpForLevel(pLvlDebut)
+				xpNecessaireLvlDebut = findRequiredXpForLevel(pLvlDebut)
+				xpNecessaireLvlFin = findRequiredXpForLevel(pLvlFin)
+				xpTotaleLvlFin = findTotalRequiredXpForLevel(pLvlFin)
 			}
-			
+			console.log("xp necessaire lvl debut: "+xpNecessaireLvlDebut)
+			console.log("xp necessaire lvl fin: "+xpNecessaireLvlFin)
 			console.log("xp totale (du level) debut: "+xpTotaleLvlDebut)
-			var xpTotaleLvlFin = findTotalRequiredXpForLevel(pLvlFin)
 			console.log("xp totale (du level) fin: "+xpTotaleLvlFin)
 			
-			var totalXpDebut = xpTotaleLvlDebut + xpDebut
-			console.log("XP totale debut: "+totalXpDebut)
-			var totalXpFin = xpTotaleLvlFin + xpFin
-			console.log("XP totale fin: "+totalXpFin)
+			var totalXpDebut = xpTotaleLvlDebut - xpNecessaireLvlDebut + xpDebut
+			var totalXpFin = xpTotaleLvlFin - xpNecessaireLvlFin + xpFin
 			var gainXp = totalXpFin - totalXpDebut
+			
+			console.log("XP totale debut: "+totalXpDebut)
+			console.log("XP totale fin: "+totalXpFin)
 			console.log("XP gain: "+gainXp)
 			
 			var xpHeure = Math.round((gainXp / duree) * 60)
