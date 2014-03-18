@@ -57,6 +57,7 @@
 				<br />
 				<div style="text-align: center">
 				<span class="startstoptime" id="stopWatch">000:00:00</span>
+				<input type="button" id="btnResetTimer" value="Reset" onclick="startStopTimer.reset()" />
 				<input type="button" id="btnStartPause" value="Start/Pause" onclick="startStopTimer.toggle()" />
 				<input id="btnCopyTime" type="button" value="Copier" onclick="copyAndReset()" />
 				</div>
@@ -167,7 +168,6 @@
 <script src="js/libs/noty/jquery.noty.js"></script>
 <script src="js/libs/noty/layouts/bottomRight.js"></script>
 <script src="js/libs/noty/themes/default.js"></script>
-<script src="js/libs/jquery-timer/jquery.timer.js"></script>
 <script src="js/libs/jquery-i18n/jquery.i18n.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/script.js"></script>

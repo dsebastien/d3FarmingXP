@@ -1649,14 +1649,12 @@
 	
 	var currentLang = "en"
 	
-	//tictac
+	//timer
 	var startStopTimer = 0
-	var startStopCurrent = 0
 	
 	//localStorage keys
 	var localStorageAttributeRuns = "runs"
 	var localStorageAttributeLanguage = "lang"
-	
 	
 	//
 	// Functions
@@ -1833,9 +1831,10 @@
 			sXpHourAverage = xpHourAveragesSum / sRuns
 			console.log("average xp/hour: "+sXpHourAverage)
 			
-			//TODO adapt to calculate xp left before next level
-			//sHoursToFarmBeforeLevel100 = (sXpMissingForLvl100 / sXpHourAverage).toFixed(2)
-			//console.log("hours to farm before level 100: "+sHoursToFarmBeforeLevel100)
+			//TODO add other stats:
+			//- hours before pLvl 1000
+			//- xp before pLvl 1000
+			// ...
 		}
 		
 		$("#valueRecordedRuns").html(formatNumberWithThousandsSeparator(sRuns))
@@ -1889,48 +1888,30 @@
 		});
 	}
 	
-	function parseTime(s) {
-		var c = s.split(':');
-		return parseInt(c[0]) * 60 + parseInt(c[1]);
-	}
-	
-	function findTimeDiff(a,b) {
-		var aMinutes = parseTime(a)
-		var bMinutes = parseTime(b)
-		
-		var diff = bMinutes - aMinutes
-		if(diff < 0){ // on suppose que c'est le lendemain matin
-			diff+= 1440
-		}
-		
-		return diff
-	}
-	
-	// Padding function
-	function pad(number, length) {
-		var str = '' + number;
-		while (str.length < length) {str = '0' + str;}
-		return str;
-	}
-	
 	function copyAndReset() {
-		var compteur = $('#stopWatch').text()
-		console.log("duree: "+compteur)
-		var split = compteur.split(":")
+		var timerClock = startStopTimer.getClock();
+		console.log("Copied duration: "+timerClock);
+		var runSeconds = Math.floor(timerClock/1000);
+		console.log("Run duration in seconds: "+runSeconds);
+		var runSecondsRemainder = Math.floor(runSeconds%60);
+		console.log("Run seconds remainder: "+runSecondsRemainder);
 		
-		var duree = parseInt(split[0])
+		var runMinutes = Math.floor(runSeconds/60); // todo etre plus precis :)
+		console.log("Run duration in minutes: "+runMinutes);
 		
 		// on était pas si loin de la minute en plus :)
-		if(split[1] >= 45){
+		if(runSecondsRemainder >= 45){ // todo etre plus precis :)
+			console.log("Run duration gets one more minute because it was close ("+runSecondsRemainder+" seconds into it)");
 			duree+=1
 		}
 		
 		// on copie la duree
-		$('#duree').val(duree)
+		$('#duree').val(duree) // todo être plus précis :)
 		
 		// on reset le compteur
-		startStopCurrent = 0;
-		startStopTimer.stop().once();
+		startStopTimer.stop();
+		startStopTimer.reset();
+		
 	}
 		
 	$(document).ready(function(){
@@ -1982,14 +1963,9 @@
 		$("#aboutSection").draggable()
 		
 		//tic tac
-		startStopTimer = $.timer(function() {
-			var min = parseInt(startStopCurrent/6000);
-			var sec = parseInt(startStopCurrent/100)-(min*60);
-			var micro = pad(startStopCurrent-(sec*100)-(min*6000),2);
-			var output = "000"; if(min > 0) {output = pad(min,3);} // 3 positions pour les minutes pour supporter de longues parties
-			$('#stopWatch').html(output+":"+pad(sec,2)+":"+micro);
-			startStopCurrent+=7;
-		}, 70, false)
+		startStopTimer = new Stopwatch(function(value) {
+			$('#stopWatch').html(msToTime(value));
+		});
 		
 		// on lance le chargement (nécessaire pour l'initialisation la première fois ou après un reset)
 		loadRuns()
