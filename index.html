@@ -22,7 +22,7 @@
  <!--[if lt IE 7]><p class=chromeframe>Ton navigateur Web est <em>préhistorique!</em> <a href="http://browsehappy.com/">Passe à un truc plus moderne</a> ou <a href="http://www.google.com/chromeframe/?redirect=true">installe Google Chrome Frame</a> pour bien profiter de ce site.</p><![endif]-->
 <header>
 	<h1 class="gradient">
-		Diablo 3 XP Farming (v1.1) [ <img class="languageIcon" src="img/fr.png" onclick="switchLanguageTo('fr')" /> / <img class="languageIcon" src="img/en.png" onclick="switchLanguageTo('en')" /> ]
+		Diablo 3 XP Farming (v2.0) [ <img class="languageIcon" src="img/fr.png" onclick="switchLanguageTo('fr')" /> / <img class="languageIcon" src="img/en.png" onclick="switchLanguageTo('en')" /> ]
 	</h1>
 </header>
 <div role="main">
@@ -32,17 +32,17 @@
 <div id="formAddRunWrapper">
 	<form id="formAddRun" action="">
 			<fieldset>
-				<input type="number" min="0" max="99" name="pLvlDebut" id="pLvlDebut" required autofocus />
-				<label id="lblLvlStart" for="pLvlDebut">Paragon level début (0-99)</label>
+				<input type="number" min="0" name="pLvlDebut" id="pLvlDebut" required autofocus />
+				<label id="lblLvlStart" for="pLvlDebut">Paragon level début (>0)</label>
 				<br />
-				<input type="number" min="0" max="100" name="pLvlFin" id="pLvlFin" required />
-				<label id="lblLvlEnd" for="pLvlFin">Paragon level fin (0-100)</label>
+				<input type="number" min="0" name="pLvlFin" id="pLvlFin" required />
+				<label id="lblLvlEnd" for="pLvlFin">Paragon level fin</label>
 				<br />
 				<input type="number" min="0" name="xpDebut" id="xpDebut" required />
-				<label id="lblXpStart" for="xpDebut">XP début (5 chiffres max)</label>	
+				<label id="lblXpStart" for="xpDebut">XP début (valeur / 1000)</label>	
 				<br />
 				<input type="number" min="0" name="xpFin" id="xpFin" required />
-				<label id="lblXpEnd" for="xpFin">XP fin (5 chiffres max)</label>	
+				<label id="lblXpEnd" for="xpFin">XP fin (valeur / 1000)</label>	
 				<br />
 				<!--
 				<input type="text" name="heureDebut" id="heureDebut" required />
@@ -124,10 +124,6 @@
 					<td id="valueParagonLevel"></td>
 				</tr>
 				<tr>
-					<td id="rowMagicFindParagon">Magic Find Paragon Level</td>
-					<td id="valueMagicFindParagon"></td>
-				</tr>
-				<tr>
 					<td id="rowXpCurrentLevel">XP niveau actuel</td>
 					<td id="valueXpCurrentLevel"></td>
 				</tr>
@@ -148,20 +144,8 @@
 					<td id="valueTotalXpAcquired">formatNumberWithThousandsSeparator(sXpCurrentTotal)</td>
 				</tr>
 				<tr>
-					<td id="rowXpMissingForLevel100">XP manquante pour level 100</td>
-					<td id="valueXpMissingForLevel100">formatNumberWithThousandsSeparator(sXpMissingForLvl100)</td>
-				</tr>
-				<tr>
 					<td id="rowXpAveragePerHour">XP moyenne / heure</td>
 					<td id="valueXpAveragePerHour"></td>
-				</tr>
-				<tr>
-					<td id="rowHoursToFarmBeforeLevel100">Heures restant pour atteindre level 100</td>
-					<td id="valueHoursToFarmBeforeLevel100"></td>
-				</tr>
-				<tr>
-					<td id="rowCompletionPercentageLevel100">% completion du niveau 100</td>
-					<td id="valueCompletionPercentageLevel100"></td>
 				</tr>
 			</tbody>
 		</table>

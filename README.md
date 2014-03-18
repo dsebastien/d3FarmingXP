@@ -1,6 +1,5 @@
 d3FarmingXP
 ===========
-
 Diablo 3 XP Stats calculator.
 
 # Usage
@@ -14,6 +13,9 @@ Use the form to add XP runs information:
 * the duration (in minutes) of the run
 * * tip: use the stop watch just below the field. Start the stopwatch, go get your XP, and hit copy when you're done
 The information about runs is kept in your local browser, not on the Web.
+
+# Release notes
+* Updated for Paragon 2.0
 
 # Facts for programming geeks
 * HTML5 & new APIs
