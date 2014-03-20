@@ -2,16 +2,20 @@ window.log = function f(){ log.history = log.history || []; log.history.push(arg
 (function(a){function b(){}for(var c="assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(","),d;!!(d=c.pop());){a[d]=a[d]||b;}})
 (function(){try{console.log();return window.console;}catch(a){return (window.console={});}}());
 
+function formatNumberWithThousandsSeparator(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
 function findTimeDiff(a,b) {
-	var aMinutes = parseTime(a)
-	var bMinutes = parseTime(b)
+	var aMinutes = parseTime(a);
+	var bMinutes = parseTime(b);
 	
-	var diff = bMinutes - aMinutes
+	var diff = bMinutes - aMinutes;
 	if(diff < 0){ // on suppose que c'est le lendemain matin
-		diff+= 1440
+		diff+= 1440;
 	}
 	
-	return diff
+	return diff;
 }
 		
 function parseTime(s) {
@@ -22,7 +26,9 @@ function parseTime(s) {
 // Padding function
 function pad(number, length) {
 	var str = '' + number;
-	while (str.length < length) {str = '0' + str;}
+	while (str.length < length) {
+		str = '0' + str;
+	}
 	return str;
 }
 
@@ -66,6 +72,7 @@ var Stopwatch = function(renderFunction, options) {
   function reset() {
 	clock = 0;
 	render(0);
+	stop();
   }
   
   function update() {
@@ -108,4 +115,8 @@ function msToTime(duration) {
 	seconds = (seconds < 10) ? "0" + seconds : seconds;
 
 	return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+}
+
+function roundUpToX(number,roundUpTo){
+  return Math.ceil(number/roundUpTo)*roundUpTo;
 }

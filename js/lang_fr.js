@@ -1,0 +1,58 @@
+var dictionary_fr = {
+	'title.addRun' : 'Ajout d\'un run',
+	'title.runs' : 'Runs',
+	'title.stats': 'Statistiques',
+	'title.about' : 'A propos',
+	
+	'msg.plvlStart' : 'Paragon level d&eacute;but (0-99)',
+	'msg.plvlEnd' : 'Paragon level fin (0-100)',
+	'msg.xpStart' : 'XP d&eacute;but (valeur / 1000)',
+	'msg.xpEnd' : 'XP fin (valeur / 1000)',
+	'msg.duration' : 'Dur&eacute;e (minutes)',
+	'msg.author' : 'Auteur',
+	'msg.sources' : 'Code source',
+	'msg.recordedRuns' : 'Runs enregistr&eacute;s',
+	'msg.recordedRunsDuration' : 'Dur&eacute;e totale des runs (minutes)',
+	'msg.xpGainedWithRuns' : 'XP gagn&eacute;e avec les runs',
+	'msg.paragonLevel' : 'Niveau Paragon',
+	'msg.xpCurrentLevel' : 'XP niveau actuel',
+	'msg.xpRequiredForNextLevel' : 'XP requise pour le niveau actuel',
+	'msg.xpMissingForLevelUp' : 'XP manquante pour level up',
+	'msg.completionPercentageCurrentLevel' : '% completion du niveau actuel',
+	'msg.totalXpAcquired' : 'XP totale acquise',
+	'msg.xpAveragePerHour' : 'XP moyenne / heure',
+	
+	'msg.xpRequiredToReachNext10' : 'XP requise pour atteindre la prochaine dizaine',
+	'msg.xpRequiredToReachNext100' : 'XP requise pour atteindre la prochaine centaine',
+	'msg.xpRequiredToReachNext1000' : 'XP requise pour atteindre le prochain millier',
+	
+	'msg.xpMissingToReachNext10' : 'XP manquante pour atteindre la prochaine dizaine',
+	'msg.xpMissingToReachNext100' : 'XP manquante pour atteindre la prochaine centaine',
+	'msg.xpMissingToReachNext1000' : 'XP manquante pour atteindre le prochain millier',
+	
+	'msg.completionPercentageNext10' : '% completion de la prochaine dizaine',
+	'msg.completionPercentageNext100' : '% completion de la prochaine centaine',
+	'msg.completionPercentageNext1000' : '% completion du prochain millier',
+	
+	'msg.hoursToFarmToReachNext10' : 'Heures de farm pour atteindre la prochaine dizaine',
+	'msg.hoursToFarmToReachNext100' : 'Heures de farm pour atteindre la prochaine centaine',
+	'msg.hoursToFarmToReachNext1000' : 'Heures de farm pour atteindre le prochain millier',
+	
+	'btn.startPause' : 'Start/Pause',
+	'btn.copyTime' : 'Copier',
+	'btn.reset' : 'Reset',
+	'btn.resetAll' : 'Effacer historique',
+	'btn.save' : 'Enregistrer',
+	
+	'col.duration' : 'Dur&eacute;e',
+	'col.lvlStart' : 'Lvl d&eacute;but',
+	'col.lvlEnd' : 'Lvl fin',
+	'col.xpStart' : 'XP d&eacute;but',
+	'col.xpEnd' : 'XP fin',
+	'col.xpTotalStart' : 'XP totale d&eacute;but',
+	'col.xpTotalEnd' : 'XP totale fin',
+	'col.xpGain' : 'XP gagn&eacute;e',
+	'col.xpPerHour' : 'XP/heure',
+	'col.stat' : 'Statistique',
+	'col.value' : 'Valeur'
+};

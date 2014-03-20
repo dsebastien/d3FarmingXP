@@ -22,7 +22,7 @@
  <!--[if lt IE 7]><p class=chromeframe>Ton navigateur Web est <em>préhistorique!</em> <a href="http://browsehappy.com/">Passe à un truc plus moderne</a> ou <a href="http://www.google.com/chromeframe/?redirect=true">installe Google Chrome Frame</a> pour bien profiter de ce site.</p><![endif]-->
 <header>
 	<h1 class="gradient">
-		Diablo 3 XP Farming (v2.0) [ <img class="languageIcon" src="img/fr.png" onclick="switchLanguageTo('fr')" /> / <img class="languageIcon" src="img/en.png" onclick="switchLanguageTo('en')" /> ]
+		Diablo 3 XP Farming (v2.1) [ <img class="languageIcon" src="img/fr.png" onclick="switchLanguageTo('fr')" /> / <img class="languageIcon" src="img/en.png" onclick="switchLanguageTo('en')" /> ]
 	</h1>
 </header>
 <div role="main">
@@ -36,7 +36,7 @@
 				<label id="lblLvlStart" for="pLvlDebut">Paragon level début (>0)</label>
 				<br />
 				<input type="number" min="0" name="pLvlFin" id="pLvlFin" required />
-				<label id="lblLvlEnd" for="pLvlFin">Paragon level fin</label>
+				<label id="lblLvlEnd" for="pLvlFin">Paragon level fin</label>    
 				<br />
 				<input type="number" min="0" name="xpDebut" id="xpDebut" required />
 				<label id="lblXpStart" for="xpDebut">XP début (valeur / 1000)</label>	
@@ -44,13 +44,6 @@
 				<input type="number" min="0" name="xpFin" id="xpFin" required />
 				<label id="lblXpEnd" for="xpFin">XP fin (valeur / 1000)</label>	
 				<br />
-				<!--
-				<input type="text" name="heureDebut" id="heureDebut" required />
-				<label for="heureDebut">Heure début (ex: 10:15)</label>
-				<br />
-				<input type="text" name="heureFin" id="heureFin" required />
-				<label for="heureFin">Heure fin (ex: 20:50)</label>
-				-->
 				<br />
 				<input type="number" min="1" id="duree" required onkeydown="if (event.keyCode == 13) document.getElementById('btnSave').click()" />
 				<label id="lblDuration" for="duree">Durée (minutes)</label>
@@ -61,7 +54,7 @@
 				<input type="button" id="btnStartPause" value="Start/Pause" onclick="startStopTimer.toggle()" />
 				<input id="btnCopyTime" type="button" value="Copier" onclick="copyAndReset()" />
 				</div>
-				<br/>			
+				<br/>
 			</fieldset>
 			<div class="centeredBox">
 					<button type="reset" id="btnReset" class="gradient">Effacer</button>
@@ -148,6 +141,54 @@
 					<td id="rowXpAveragePerHour">XP moyenne / heure</td>
 					<td id="valueXpAveragePerHour"></td>
 				</tr>
+				<tr>
+					<td id="rowXpRequiredToReachNext10">XP requise pour la prochaine dizaine</td>
+					<td id="valueXpRequiredToReachNext10"></td>
+				</tr>
+				<tr>
+					<td id="rowXpRequiredToReachNext100">XP requise pour la prochaine centaine</td>
+					<td id="valueXpRequiredToReachNext100"></td>
+				</tr>
+				<tr>
+					<td id="rowXpRequiredToReachNext1000">XP requise pour le prochain millier</td>
+					<td id="valueXpRequiredToReachNext1000"></td>
+				</tr>
+				<tr>
+					<td id="rowXpMissingToReachNext10">XP manquante pour atteindre la prochaine dizaine</td>
+					<td id="valueXpMissingToReachNext10"></td>
+				</tr>
+				<tr>
+					<td id="rowXpMissingToReachNext100">XP manquante pour atteindre la prochaine centaine</td>
+					<td id="valueXpMissingToReachNext100"></td>
+				</tr>
+				<tr>
+					<td id="rowXpMissingToReachNext100">XP manquante pour atteindre le prochain millier</td>
+					<td id="valueXpMissingToReachNext1000"></td>
+				</tr>
+				<tr>
+					<td id="rowCompletionPercentageNext10">% completion de la prochaine dizaine</td>
+					<td id="valueCompletionPercentageNext10"></td>
+				</tr>
+				<tr>
+					<td id="rowCompletionPercentageNext100">% completion de la prochaine centaine</td>
+					<td id="valueCompletionPercentageNext100"></td>
+				</tr>
+				<tr>
+					<td id="rowCompletionPercentageNext1000">% completion du prochain millier</td>
+					<td id="valueCompletionPercentageNext1000"></td>
+				</tr>
+				<tr>
+					<td id="rowHoursToFarmToReachNext10">Heures de farm avant la prochaine dizaine</td>
+					<td id="valueHoursToFarmToReachNext10"></td>
+				</tr>
+				<tr>
+					<td id="rowHoursToFarmToReachNext100">Heures de farm avant la prochaine centaine</td>
+					<td id="valueHoursToFarmToReachNext100"></td>
+				</tr>
+				<tr>
+					<td id="rowHoursToFarmToReachNext1000">Heures de farm avant le prochain millier</td>
+					<td id="valueHoursToFarmToReachNext1000"></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -170,7 +211,11 @@
 <script src="js/libs/noty/themes/default.js"></script>
 <script src="js/libs/jquery-i18n/jquery.i18n.min.js"></script>
 <script src="js/plugins.js"></script>
-<script src="js/script.js"></script>
+<script src="js/lang_en.js"></script>
+<script src="js/lang_fr.js"></script>
+<script src="js/lang.js"></script>
+<script src="js/paragon.js"></script>
+<script src="js/script.js"></script
 
 </body>
 </html>

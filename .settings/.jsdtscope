@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="libs/noty/layouts/|libs/noty/|libs/jquery-i18n/|libs/noty/themes/|libs/jquery-i18n/examples/|libs/jquery-i18n/src/|libs/" kind="src" path="js"/>
+	<classpathentry excluding="noty/layouts/|noty/|jquery-i18n/|noty/themes/|jquery-i18n/examples/|jquery-i18n/src/" kind="src" path="js/libs"/>
+	<classpathentry excluding="examples/|src/" kind="src" path="js/libs/jquery-i18n"/>
+	<classpathentry kind="src" path="js/libs/jquery-i18n/examples"/>
+	<classpathentry kind="src" path="js/libs/jquery-i18n/src"/>
+	<classpathentry excluding="layouts/|themes/" kind="src" path="js/libs/noty"/>
+	<classpathentry kind="src" path="js/libs/noty/layouts"/>
+	<classpathentry kind="src" path="js/libs/noty/themes"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
