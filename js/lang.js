@@ -1,6 +1,9 @@
 // default language
 var currentLang = "en";
 
+// localStorage keys
+var localStorageAttributeLanguage = "lang";
+
 function loadLanguage(){
 	console.log("Trying to load language from LocalStorage");
 	var lang = localStorage.getItem(localStorageAttributeLanguage);
@@ -16,7 +19,6 @@ function loadLanguage(){
 function switchLanguageTo(newLang){
 	console.log("Switching the language to: "+newLang);
 
-	var previousLang = currentLang;
 	currentLang = newLang;
 	
 	if(newLang == "en"){
@@ -24,6 +26,7 @@ function switchLanguageTo(newLang){
 	}else{ // for now we only support english & french
 		$.i18n.setDictionary(dictionary_fr);
 	}
+	localStorage.setItem(localStorageAttributeLanguage, newLang);
 	
 	// todo improve -- translate only if necessary?
 	translatePage();

@@ -6,7 +6,6 @@ var startStopTimer = 0;
 
 //localStorage keys
 var localStorageAttributeRuns = "runs";
-var localStorageAttributeLanguage = "lang";
 
 //
 // Functions
