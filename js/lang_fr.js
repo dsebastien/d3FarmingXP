@@ -4,8 +4,8 @@ var dictionary_fr = {
 	'title.stats': 'Statistiques',
 	'title.about' : 'A propos',
 	
-	'msg.plvlStart' : 'Paragon level d&eacute;but (0-99)',
-	'msg.plvlEnd' : 'Paragon level fin (0-100)',
+	'msg.plvlStart' : 'Paragon level d&eacute;but',
+	'msg.plvlEnd' : 'Paragon level fin',
 	'msg.xpStart' : 'XP d&eacute;but (valeur / 1000)',
 	'msg.xpEnd' : 'XP fin (valeur / 1000)',
 	'msg.duration' : 'Dur&eacute;e (minutes)',
