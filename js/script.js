@@ -258,6 +258,10 @@ function updateStats(runs){
 	$("#valueCompletionPercentageNext100").html(sXpPercentageNext100+"% <progress max='100' value='"+sXpPercentageNext100+"'></progress>");
 	$("#valueCompletionPercentageNext1000").html(sXpPercentageNext1000+"% <progress max='100' value='"+sXpPercentageNext1000+"'></progress>");
 	
+	$("#valueHoursToFarmToReachNext10").html(formatNumberWithThousandsSeparator(sXpHoursToFarmToReachNext10));
+	$("#valueHoursToFarmToReachNext100").html(formatNumberWithThousandsSeparator(sXpHoursToFarmToReachNext100));
+	$("#valueHoursToFarmToReachNext1000").html(formatNumberWithThousandsSeparator(sXpHoursToFarmToReachNext1000));
+	
 	$("div#stats").slideUp();
 	$("table#tblStats").removeAttr("hidden");
 	$("div#stats").slideDown();
