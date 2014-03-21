@@ -120,3 +120,7 @@ function msToTime(duration) {
 function roundUpToX(number,roundUpTo){
   return Math.ceil(number/roundUpTo)*roundUpTo;
 }
+
+function roundDownToX(number,roundDownTo){
+  return Math.floor(number/roundDownTo)*roundDownTo;
+}

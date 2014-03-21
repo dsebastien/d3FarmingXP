@@ -37,30 +37,24 @@ function loadRuns(){
 }
 
 function findRequiredXpForLevel(level){
-	var retVal = -1;
+	var retVal = 0; // if info not found we assume that no xp is needed
 	// http://api.jquery.com/category/traversing/tree-traversal/
 	$(paragonLevels["paragonLevels"]).each(function(){
 		if(this.level == level){
 			retVal = this.xp;
 		}
 	})
-	if(retVal == -1){
-		console.log("Error retrieving XP value");
-	}
 	return retVal;
 }
 
 function findTotalRequiredXpForLevel(level){
-	var retVal = -1;
+	var retVal = 0; // if info not found we assume that no xp is needed
 	// http://api.jquery.com/category/traversing/tree-traversal/
 	$(paragonLevels["paragonLevels"]).each(function(){
 		if(this.level == level){
 			retVal = this.totalXP;
 		}
 	})
-	if(retVal == -1){
-		console.log("Error retrieving total XP value");
-	}
 	return retVal;
 }
 
@@ -111,6 +105,7 @@ function updateStats(runs){
 	
 	var spLvl = "?";
 	var nextLvl = "?";
+	var prev10 = "?";
 	var next10 = "?";
 	var next100 = "?";
 	var next1000 = "?";
@@ -125,12 +120,27 @@ function updateStats(runs){
 	var sXpRequiredForNext10 = "?";
 	var sXpRequiredForNext100 = "?";
 	var sXpRequiredForNext1000 = "?";
+	var sXpRequiredForPrev10 = "?";
+	var sXpRequiredForPrev100 = "?";
+	var sXpRequiredForPrev1000 = "?";
 	var sXpRequiredTotalForNext10 = "?";
 	var sXpRequiredTotalForNext100 = "?";
 	var sXpRequiredTotalForNext1000 = "?";
+	var sXpRequiredTotalForPrev10 = "?";
+	var sXpRequiredTotalForPrev100 = "?";
+	var sXpRequiredTotalForPrev1000 = "?";
 	var sTotalXpRequiredToReachNext10 = "?";
 	var sTotalXpRequiredToReachNext100 = "?";
 	var sTotalXpRequiredToReachNext1000 = "?";
+	var sTotalXpRequiredToReachPrev10 = "?";
+	var sTotalXpRequiredToReachPrev100 = "?";
+	var sTotalXpRequiredToReachPrev1000 = "?";
+	var sTotalXpRequiredForCurrent10 = "?";
+	var sTotalXpRequiredForCurrent100 = "?";
+	var sTotalXpRequiredForCurrent1000 = "?";
+	var sTotalXpGainedInCurrent10 = "?";
+	var sTotalXpGainedInCurrent100 = "?";
+	var sTotalXpGainedInCurrent1000 = "?";
 	var sXpMissingToReachNext10 = "?";
 	var sXpMissingToReachNext100 = "?";
 	var sXpMissingToReachNext1000 = "?";
@@ -145,6 +155,7 @@ function updateStats(runs){
 	if(sRuns > 0){
 		spLvl = runs[runs.length-1][2];
 		nextLvl = "" + (parseInt(spLvl)+1);
+		
 		next10 = "" + roundUpToX(parseInt(spLvl),10);
 		next100 = "" + roundUpToX(parseInt(spLvl),100);
 		next1000 = "" + roundUpToX(parseInt(spLvl),1000);
@@ -161,11 +172,18 @@ function updateStats(runs){
 			next1000 = "" + (parseInt(spLvl)+1000);
 		}
 		
+		prev10 = "" + roundDownToX(parseInt(spLvl),10);
+		prev100 = "" + roundDownToX(parseInt(spLvl),100);
+		prev1000 = "" + roundDownToX(parseInt(spLvl),1000);
+		
 		console.log("plvl: "+spLvl);
 		console.log("plvl +1: "+nextLvl);
 		console.log("plvl next 10:   "+next10);
 		console.log("plvl next 100:  "+next100);
 		console.log("plvl next 1000: "+next1000);
+		console.log("plvl prev 10:   "+prev10);
+		console.log("plvl prev 100:  "+prev100);
+		console.log("plvl prev 1000: "+prev1000);
 		
 		sXpInCurrentLvl = runs[runs.length-1][4];
 		console.log("xp current level: "+sXpInCurrentLvl);
@@ -189,6 +207,38 @@ function updateStats(runs){
 		console.log("xp total required to reach next 10:   "+sTotalXpRequiredToReachNext10);
 		console.log("xp total required to reach next 100:  "+sTotalXpRequiredToReachNext100);		
 		console.log("xp total required to reach next 1000: "+sTotalXpRequiredToReachNext1000);
+		
+		sXpRequiredForPrev10 = findRequiredXpForLevel(prev10);
+		sXpRequiredForPrev100 = findRequiredXpForLevel(prev100);
+		sXpRequiredForPrev1000 = findRequiredXpForLevel(prev1000);
+		console.log("xp required to for prev 10:   "+sXpRequiredForPrev10);
+		console.log("xp required to for prev 100:  "+sXpRequiredForPrev100);
+		console.log("xp required to for prev 1000: "+sXpRequiredForPrev1000);
+		
+		sXpRequiredTotalForPrev10 = findTotalRequiredXpForLevel(prev10);
+		sXpRequiredTotalForPrev100 = findTotalRequiredXpForLevel(prev100);
+		sXpRequiredTotalForPrev1000 = findTotalRequiredXpForLevel(prev1000);
+		
+		sTotalXpRequiredToReachPrev10 = sXpRequiredTotalForPrev10 - sXpRequiredForPrev10;
+		sTotalXpRequiredToReachPrev100 = sXpRequiredTotalForPrev100 - sXpRequiredForPrev100;
+		sTotalXpRequiredToReachPrev1000 = sXpRequiredTotalForPrev1000 - sXpRequiredForPrev1000;
+		console.log("xp total required to reach prev 10:   "+sTotalXpRequiredToReachPrev10);
+		console.log("xp total required to reach prev 100:  "+sTotalXpRequiredToReachPrev100);
+		console.log("xp total required to reach prev 1000: "+sTotalXpRequiredToReachPrev1000);
+		
+		sTotalXpRequiredForCurrent10 = sTotalXpRequiredToReachNext10 - sTotalXpRequiredToReachPrev10;
+		sTotalXpRequiredForCurrent100 = sTotalXpRequiredToReachNext100 - sTotalXpRequiredToReachPrev100;
+		sTotalXpRequiredForCurrent1000 = sTotalXpRequiredToReachNext1000 - sTotalXpRequiredToReachPrev1000;
+		console.log("xp total required for current 10:   "+sTotalXpRequiredForCurrent10);
+		console.log("xp total required for current 100:  "+sTotalXpRequiredForCurrent100);
+		console.log("xp total required for current 1000: "+sTotalXpRequiredForCurrent1000);
+		
+		sTotalXpGainedInCurrent10 = sXpCurrentTotal - sTotalXpRequiredToReachPrev10;
+		sTotalXpGainedInCurrent100 = sXpCurrentTotal - sTotalXpRequiredToReachPrev100;
+		sTotalXpGainedInCurrent1000 = sXpCurrentTotal - sTotalXpRequiredToReachPrev1000;
+		console.log("total xp gained in current 10:   "+sTotalXpGainedInCurrent10);
+		console.log("total xp gained in current 100:  "+sTotalXpGainedInCurrent100);
+		console.log("total xp gained in current 1000: "+sTotalXpGainedInCurrent1000);
 		
 		sXpMissingForLvlUp = sXpRequiredForCurrentLevel - sXpInCurrentLvl;
 		console.log("xp missing for level up: "+sXpMissingForLvlUp);
@@ -337,7 +387,7 @@ $(document).ready(function(){
 			open: {height: 'toggle'},
 			close: {height: 'toggle'},
 			easing: 'swing',
-			speed: 1500 // opening & closing animation speed
+			speed: 2000 // opening & closing animation speed
 		},
 		timeout: true, // delay for closing event. Set false for sticky notifications
 		force: false, // adds notification to the beginning of queue when set to true
