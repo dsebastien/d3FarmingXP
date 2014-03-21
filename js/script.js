@@ -469,9 +469,9 @@ $(document).ready(function(){
 		console.log("xpFin: "+xpFin);
 		
 		var duree = $('#duree').val();
-		if(duree == 0){
+		if(duree < 1){
 			duree = 1;
-			console.log("Duree forcee a 1");
+			console.log("Duree forcee a 1 pour eviter un soucis de validation sous Firefox");
 		}
 		console.log("duree: "+duree);
 		
