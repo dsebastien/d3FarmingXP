@@ -469,6 +469,10 @@ $(document).ready(function(){
 		console.log("xpFin: "+xpFin);
 		
 		var duree = $('#duree').val();
+		if(duree == 0){
+			duree = 1;
+			console.log("Duree forcee a 1");
+		}
 		console.log("duree: "+duree);
 		
 		// calcul d'autres infos
